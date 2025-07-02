@@ -5,7 +5,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: grey;
+    background-color: rgb(255, 255, 255);
 }
 
 
@@ -18,16 +18,28 @@ body {
     padding: 20px;
     box-sizing: border-box;
     border-radius: 10px;
-    background-color: orange;
+    background-color: rgb(0, 103, 141);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+
 }
 
 #screen {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    display: flex;
 }
 
 #screenInput {
-    height: 30px;
+    height: 60px;
     border-radius: 5px;
+    border: 5px solid rgb(52, 127, 76);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    background-color: rgb(79, 195, 116);
+    width: 200px;
+    flex: 1;
+    box-sizing: border-box;
+    font-size: 25px;
+    text-align: end;
+
 }
 
 #buttons {
@@ -45,4 +57,8 @@ body {
     border-radius: 5px;
     background-color: rgb(51, 228, 255);
     cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgb(51, 190, 255);
 }
