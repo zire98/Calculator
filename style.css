@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: grey;
+}
+
+
+.calculator {
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: orange;
+}
+
+#screen {
+    margin-bottom: 20px;
+}
+
+#screenInput {
+    height: 30px;
+    border-radius: 5px;
+}
+
+#buttons {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: rgb(51, 228, 255);
+    cursor: pointer;
+}
