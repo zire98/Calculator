@@ -18,7 +18,7 @@ function typeButton(e) {
     if (e.target.classList.contains("number")) {
         return "number";
     } else if (e.target.classList.contains("operator")) {
-        return operator;
+        return "operator";
     } else if (e.target.id == "result") {
         return "result";
     } else if (e.target.id == "decimal") {
@@ -26,66 +26,66 @@ function typeButton(e) {
     }
 }
 
-function check(value) {
-    value == undefined ? true : false;
-}
-
 function result(firstNumber, operator, secondNumber) {
     switch (operator) {
         case "+":
             return add(firstNumber, secondNumber);
-            break;
 
         case "-":
             return substract(firstNumber, secondNumber);
-            break;
-
         case "*":
             return multiply(firstNumber, secondNumber);
-            break;
 
         case "/":
             return divide(firstNumber, secondNumber);
-            break;
     }
 }
 
-function logic(button, typeButton, firstNumber, operator, secondNumber) {
+function logic(button, typeButton, calc) {
     switch (typeButton) {
         case "number":
-            if (operator === undefined) {
-                firstNumber += button.textContent;
-                show(firstNumber);
+            if (calc.operator === "") {
+                calc.firstNumber += button.textContent;
+                show(calc.firstNumber);
             } else {
-                secondNumber += button.textContent;
-                show(secondNumber);
+                calc.secondNumber += button.textContent;
+                show(calc.secondNumber);
             }
             break;
 
         case "operator":
-            operator = button.textContent;
-            show(operator);
+            calc.operator = button.textContent;
+            show(calc.operator);
             break;
 
         case "decimal":
-            if (operator === undefined) {
-                firstNumber.contains(".") ? false : firstNumber += button.textContent;
-                show(firstNumber);
-
+            if (calc.operator === "") {
+                if (!calc.firstNumber.includes(".")) {
+                    calc.firstNumber += button.textContent;
+                }
+                show(calc.firstNumber);
             } else {
-                secondNumber.contains(".") ? false : firstNumber += button.textContent;
-                show(secondNumber);
+                if (!calc.secondNumber.includes(".")) {
+                    calc.secondNumber += button.textContent;
+                }
+                show(calc.secondNumber);
             }
             break;
 
         case "result":
-            firstNumber == result(firstNumber, operator, secondNumber);
-            show(firstNumber);
-            operator = "";
-            secondNumber = "";
+            let n1 = parseFloat(calc.firstNumber);
+            let n2 = parseFloat(calc.secondNumber);
+
+            if (!isNaN(n1) && !isNaN(n2)) {
+                calc.firstNumber = result(n1, calc.operator, n2).toString();
+                show(calc.firstNumber);
+                calc.operator = "";
+                calc.secondNumber = "";
+            }
             break;
     }
 }
+
 
 function show(result) {
     let screen = document.querySelector("#screen");
@@ -94,14 +94,17 @@ function show(result) {
 
 document.addEventListener('DOMContentLoaded', () => {
     let buttons = document.querySelectorAll('button');
-    let firstNumber;
-    let operator;
-    let secondNumber;
+
+    let calculator = {
+        firstNumber: "",
+        operator: "",
+        secondNumber: ""
+    };
 
     buttons.forEach(button => {
         button.addEventListener("click", (e) => {
-            let typeButton = typeButton(e);
-            logic(button, typeButton, firstNumber, operator, secondNumber);
+            let type = typeButton(e);
+            logic(button, type, calculator);
         })
     });
 })
