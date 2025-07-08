@@ -23,6 +23,10 @@ function typeButton(e) {
         return "result";
     } else if (e.target.id == "decimal") {
         return "decimal";
+    } else if (e.target.id == "ac") {
+        return "ac";
+    } else if (e.target.id == "del") {
+        return "dell";
     }
 }
 
@@ -82,6 +86,13 @@ function logic(button, typeButton, calc) {
                 calc.operator = "";
                 calc.secondNumber = "";
             }
+            break;
+
+        case "ac":
+            calc.firstNumber = "";
+            calc.operator = "";
+            calc.secondNumber = "";
+            show(calc.firstNumber);
             break;
     }
 }
