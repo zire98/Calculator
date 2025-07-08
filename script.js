@@ -114,6 +114,7 @@ function logic(button, typeButton, calc) {
 function show(result) {
     let screen = document.querySelector("#screen");
     screen.textContent = result;
+    screen.scrollLeft = screen.scrollWidth;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
