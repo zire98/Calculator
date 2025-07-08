@@ -64,12 +64,12 @@ function logic(button, typeButton, calc) {
 
         case "decimal":
             if (calc.operator === "") {
-                if (!calc.firstNumber.includes(".")) {
+                if (!calc.firstNumber.includes(".") && calc.firstNumber.length >= 1) {
                     calc.firstNumber += button.textContent;
                 }
                 show(calc.firstNumber);
             } else {
-                if (!calc.secondNumber.includes(".")) {
+                if (!calc.secondNumber.includes(".") && calc.secondNumber.length >= 1) {
                     calc.secondNumber += button.textContent;
                 }
                 show(calc.secondNumber);
