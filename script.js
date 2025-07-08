@@ -26,7 +26,7 @@ function typeButton(e) {
     } else if (e.target.id == "ac") {
         return "ac";
     } else if (e.target.id == "del") {
-        return "dell";
+        return "del";
     }
 }
 
@@ -93,6 +93,19 @@ function logic(button, typeButton, calc) {
             calc.operator = "";
             calc.secondNumber = "";
             show(calc.firstNumber);
+            break;
+
+        case "del":
+            if (calc.secondNumber) {
+                calc.secondNumber = calc.secondNumber.slice(0, -1);
+                show(calc.secondNumber);
+            } else if (calc.operator) {
+                calc.operator = "";
+                show(calc.firstNumber);
+            } else if (calc.firstNumber) {
+                calc.firstNumber = calc.firstNumber.slice(0, -1);
+                show(calc.firstNumber);
+            }
             break;
     }
 }
